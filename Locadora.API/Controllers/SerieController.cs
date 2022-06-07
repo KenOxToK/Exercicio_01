@@ -14,8 +14,8 @@ namespace Locadora.API.Controllers
             new GestaoServices();
 
         [HttpPost]
-        public ActionResult CadastrarUsuario(
-            [FromBody] ListaItensViewModel serieRecebido)
+        public ActionResult CadastrarSerie(
+            [FromBody] SerieViewModel serieRecebido)
         {
             if (serieRecebido == null)
             {

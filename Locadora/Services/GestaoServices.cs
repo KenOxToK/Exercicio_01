@@ -28,6 +28,19 @@ namespace Locadora.Services
             }
         }
 
+        public Filme CadastrarFilme(FilmeViewModel filmeRecebido)
+        {
+            Filme filme = new Filme();
+            filme.Titulo = filmeRecebido.Titulo;
+            filme.Quantidade = filmeRecebido.Quantidade;
+            filme.Valor = filmeRecebido.Valor;
+            filme.Duracao = filmeRecebido.Duracao;
+
+            _biblioteca.Add(filme);
+
+            return filme;
+        }
+
         public void CadastrarFilme()
         {
             Filme filme = new Filme();
@@ -47,16 +60,18 @@ namespace Locadora.Services
             _biblioteca.Add(filme);
         }
 
-        public Serie CadastrarSerie(ListaItensViewModel serieRecebido)
+        public Serie CadastrarSerie(SerieViewModel serieRecebido)
         {
-            throw new NotImplementedException();
-        }
+            Serie serie = new Serie();
+            serie.Titulo = serieRecebido.Titulo;
+            serie.Quantidade = serieRecebido.Quantidade;
+            serie.Valor = serieRecebido.Valor;
+            serie.Temporadas = serieRecebido.Temporadas;
 
-        public List<Serie> ListarSerie()
-        {
-            throw new NotImplementedException();
-        }
+            _biblioteca.Add(serie);
 
+            return serie;
+        }
         public void CadastrarSerie()
         {
             Serie serie = new Serie();
