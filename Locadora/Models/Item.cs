@@ -10,8 +10,10 @@ namespace Locadora.Models
         public int Id { get; set; }
         public int Quantidade { get; set; }
         public int Valor { get; set; }
+        public int Duracao { get; set; }
+        public int Temporadas { get; set; }
         public string Titulo { get; set; }
-        public string Descricao { get; set; }
+
 
         public Item()
         {

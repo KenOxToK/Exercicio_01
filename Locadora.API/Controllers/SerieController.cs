@@ -3,11 +3,13 @@ using Locadora.Services;
 using Locadora.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Locadora.API.Controllers
 {
-    [Route("[controller]")]
     [ApiController]
+    [Route("[controller]")]
+    
     public class SerieController : ControllerBase
     {
         private GestaoServices _gestaoServices =
@@ -26,6 +28,14 @@ namespace Locadora.API.Controllers
                 .CadastrarSerie(serieRecebido);
 
             return Created("Serie", objetoCriado);
+        }
+        [HttpGet]
+        public List<Item> ListarSerie()
+        {
+            List<Item> listaSerie =
+                _gestaoServices.ListarSerie();
+
+            return listaSerie;
         }
     }
 }

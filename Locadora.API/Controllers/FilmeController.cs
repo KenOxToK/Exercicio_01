@@ -3,6 +3,7 @@ using Locadora.Services;
 using Locadora.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Locadora.API.Controllers
 {
@@ -27,6 +28,14 @@ namespace Locadora.API.Controllers
                 .CadastrarFilme(filmeRecebido);
 
             return Created("Filme", objetoCriado);
+        }
+        [HttpGet]
+        public List<Item> ListarFilme()
+        {
+            List<Item> listaFilme =
+                _gestaoServices.ListarFilme();
+
+            return listaFilme;
         }
     }
 }
