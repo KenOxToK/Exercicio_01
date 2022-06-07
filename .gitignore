@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Locadora.API/bin/Debug/netcoreapp3.1
+/Locadora.API/obj
