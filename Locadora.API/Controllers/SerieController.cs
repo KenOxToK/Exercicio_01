@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace Locadora.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]")] 
     
     public class SerieController : ControllerBase
     {
