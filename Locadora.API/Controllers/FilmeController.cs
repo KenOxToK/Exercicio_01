@@ -12,7 +12,7 @@ namespace Locadora.API.Controllers
     
     public class FilmeController : ControllerBase
     {
-        private GestaoServices _gestaoServices =
+        private GestaoServices _filme =
            new GestaoServices();
 
         [HttpPost]
@@ -24,16 +24,16 @@ namespace Locadora.API.Controllers
                 return BadRequest("Não foi recebido nenhum titulo de filme.");
             }
 
-            Filme objetoCriado = _gestaoServices
+            Filme objetoCriado = _filme
                 .CadastrarFilme(filmeRecebido);
 
             return Created("Filme", objetoCriado);
         }
         [HttpGet]
-        public List<Item> ListarFilme()
+        public List<Filme> ListarFilme()
         {
-            List<Item> listaFilme =
-                _gestaoServices.ListarFilme();
+            List<Filme> listaFilme =
+                _filme.ListarFilme();
 
             return listaFilme;
         }

@@ -9,6 +9,6 @@ namespace Locadora.ViewModel
         public int Quantidade { get; set; }
         public int Valor { get; set; }
         public string Titulo { get; set; }
-        public int Temporadas { get; internal set; }
+        public int Temporadas { get;  set; }
     }
 }

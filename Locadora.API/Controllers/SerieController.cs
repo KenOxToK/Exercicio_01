@@ -12,7 +12,7 @@ namespace Locadora.API.Controllers
     
     public class SerieController : ControllerBase
     {
-        private GestaoServices _gestaoServices =
+        private GestaoServices _serie =
             new GestaoServices();
 
         [HttpPost]
@@ -24,16 +24,16 @@ namespace Locadora.API.Controllers
                 return BadRequest("Não foi recebido nenhum titulo de serie.");
             }
 
-            Serie objetoCriado = _gestaoServices
+            Serie objetoCriado = _serie
                 .CadastrarSerie(serieRecebido);
 
             return Created("Serie", objetoCriado);
         }
         [HttpGet]
-        public List<Item> ListarSerie()
+        public List<Serie> ListarSerie()
         {
-            List<Item> listaSerie =
-                _gestaoServices.ListarSerie();
+            List<Serie> listaSerie =
+                _serie.ListarSerie();
 
             return listaSerie;
         }

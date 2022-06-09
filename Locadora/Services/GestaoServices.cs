@@ -10,23 +10,24 @@ namespace Locadora.Services
 {
     public class GestaoServices
     {
-        private List<Item> _biblioteca = Armazenamento.Biblioteca;
+        private List<Filme> _filme = Armazenamento.Filme;
+        private List<Serie> _serie = Armazenamento.Serie;
         public void Cadastrar()
         {
-            Console.WriteLine("O que deseja cadastrar?");
-            Console.WriteLine("1 - Filme");
-            Console.WriteLine("2 - Série");
-            Console.WriteLine("Qualquer outro número para voltar");
+            //Console.WriteLine("O que deseja cadastrar?");
+            //Console.WriteLine("1 - Filme");
+            //Console.WriteLine("2 - Série");
+            //Console.WriteLine("Qualquer outro número para voltar");
 
-            int respotas = int.Parse(Console.ReadLine());
-            if (respotas == 1)
-            {
-                CadastrarFilme();
-            }
-            if (respotas == 2)
-            {
-                CadastrarSerie();
-            }
+            //int respotas = int.Parse(Console.ReadLine());
+            //if (respotas == 1)
+            //{
+            //    CadastrarFilme();
+            //}
+            //if (respotas == 2)
+            //{
+            //    CadastrarSerie();
+            //}
         }
 
         public Filme CadastrarFilme(FilmeViewModel filmeRecebido)
@@ -37,20 +38,20 @@ namespace Locadora.Services
             filme.Valor = filmeRecebido.Valor;
             filme.Duracao = filmeRecebido.Duracao;
 
-            _biblioteca.Add(filme);
+            _filme.Add(filme);
 
             return filme;
         }
 
        
 
-        public List<Item> ListarFilme()
+        public List<Filme> ListarFilme()
         {
-                return Armazenamento.Biblioteca
+                return Armazenamento.Filme
                     .OrderBy(filme => filme.Titulo)
                     .ThenBy(filme => filme.Quantidade)
                     .ThenBy(filme => filme.Valor)
-                    .ThenBy(filme => filme.Temporadas)
+                    .ThenBy(filme => filme.Duracao)
                     .ToList();
          
         }
@@ -71,16 +72,16 @@ namespace Locadora.Services
             Console.WriteLine("Qual a duração do filme?");
             filme.Duracao = int.Parse(Console.ReadLine());
 
-            _biblioteca.Add(filme);
+            _filme.Add(filme);
         } 
 
-        public List<Item> ListarSerie()
+        public List<Serie> ListarSerie()
         {
-            return Armazenamento.Biblioteca
+            return Armazenamento.Serie
                     .OrderBy(filme => filme.Titulo)
                     .ThenBy(filme => filme.Quantidade)
                     .ThenBy(filme => filme.Valor)
-                    .ThenBy(filme => filme.Duracao)
+                    .ThenBy(filme => filme.Temporadas)
                     .ToList();
         }
 
@@ -92,7 +93,7 @@ namespace Locadora.Services
             serie.Valor = serieRecebido.Valor;
             serie.Temporadas = serieRecebido.Temporadas;
 
-            _biblioteca.Add(serie);
+            _serie.Add(serie);
 
             return serie;
         }
@@ -112,7 +113,16 @@ namespace Locadora.Services
             Console.WriteLine("Quantas temporadas tem esta série?");
             serie.Temporadas = int.Parse(Console.ReadLine());
 
-            _biblioteca.Add(serie);
+            _serie.Add(serie);
+        }
+        public List<object> ListarItens()
+        {
+            List<object> listaQueVaiSerRetornada = new List<object>();
+
+            listaQueVaiSerRetornada.AddRange(_filme);
+            listaQueVaiSerRetornada.AddRange(_serie);
+
+            return listaQueVaiSerRetornada;
         }
     }
 }
